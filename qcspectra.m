@@ -1,14 +1,18 @@
-function pro = qcspectra(EEG,nw,fs,fm,varargin)
+function [pro, rkr]= qcspectra(EEG,nw,fs,fm,varargin)
 % Quality check of cross spectra
 % Input
 %       EEG: data (nc-nt-ns / nc-nt)
 %       nw: time-halfbandwidth product
 %       fs: sampling rate
 %       fm: maximum frequency
-%       loc --- readlocs
+%       loc --- channel position supported by readlocs
 %       svpath
 % Output
-% pro ---- proportion
+%         pro ---- proportion
+%         rkr ---- [rank of the EEG waveforms, the power spectra and
+%    crossspectr at 10Hz, mean correlation interchannels powers topomaps]
+
+% Shiang Hu, Jan. 9, 2020
 
 idx = EEG(:,1)~=0&~isnan(EEG(:,1));
 [S,f,nss] = xspt(EEG(idx,:),nw,fs,fm);
@@ -53,4 +57,9 @@ if nargin==6
     saveas(gcf,svpath);
 end
 
+% ouput other qc measures
+nfc = 77; % cutting off at 30Hz
+rou = triu(corr(log10(Sd(:,1:nfc))),1);
+mr = sum(rou(:))./(nfc*(nfc-1)/2);
+rkr = [rank(EEG(idx,:)), rank(Sd), rank(S(:, :, 25)), mr]; 
 end
