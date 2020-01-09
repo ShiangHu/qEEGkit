@@ -1,3 +1,3 @@
 SPTKIT
-init matlab environment for qeeg study
-misc codes for spectral analysis
+# init matlab environment for qeeg study
+# misc codes for spectral analysis
