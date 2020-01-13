@@ -24,6 +24,11 @@ addpath(eeglabpath,elocpath,sptpath,refpath);
 if nargin == 0
     eeglab;
 else % no gui pops up
+    addpath(genpath(fullfile(eeglabpath,filesep,'functions')));
+    addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','doc'));
+    addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','t200_FileAccess'));
+    addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','t250_ArtifactPreProcessingQualityControl'));
+    rmpath (genpath(fullfile(eeglabpath,filesep,'functions','octavefunc')));
 end
 
 clc;
