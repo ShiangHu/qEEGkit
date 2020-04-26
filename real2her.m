@@ -18,12 +18,12 @@ if isreal(mat_in)
         slice_in = mat_in(:,:,s);
         tri = tril(slice_in,-1); % get the lower trianglar matrix
         mat_out(:,:,s) = triu(slice_in)+triu(slice_in,1)' +1i.*(tri'-tri);
-        disp('convert hermitian to real');
     end
 else
     for s = 1:nslice
         slice_in = mat_in(:,:,s);
         mat_out(:,:,s) = triu(real(slice_in))-tril(imag(slice_in),-1);
+        disp('convert hermitian to real');
     end
 end
 
