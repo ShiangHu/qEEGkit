@@ -1,4 +1,4 @@
-function [S_RB,S,rk] = covrb(data,nw,fs)
+function [S_RB,S,rk,f] = covrb(data,nw,fs)
 % Covariance regularization using the rao blackwell estimator to make it SPD
 % Input
 %   data --- nchannel by sl by ns
@@ -10,8 +10,9 @@ function [S_RB,S,rk] = covrb(data,nw,fs)
 %       rk   ---  nf*2, the rank of S, S_RB
 
 
-% See paper: Sabbagh, et al. “Predictive Regression Modeling with MEG/EEG: 
-% From Source Power to Signals and Cognitive States.” https://doi.org/10.1016/j.neuroimage.2020.116893.
+% See paper: Walden, A T. “Random Matrix Derived Shrinkage of Spectral Precision Matrices.” 
+% IEEE TRANSACTIONS ON SIGNAL PROCESSING 63, no. 17 (2015): 11. https://doi.org/10.1109/TSP.2015.2443726.
+
 
 % multitaper cross spectrum
 [S, f] = xspt(data,nw,fs,30);
