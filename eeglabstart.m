@@ -8,9 +8,9 @@ function eeglabstart(varargin)
 % Shiang Hu, Oct. 7, 2019
 
 if ispc
-    eeglabpath = 'E:\OneDrive - Neuroinformatics Collaboratory\Scripting\Toolbox\eeglab';
-    sptpath = 'E:\OneDrive - Neuroinformatics Collaboratory\Scripting\iEEG study\spt_est';
-    refpath = 'E:\Neuroinformatics Collaboratory\BrainWorks - Ref utilities';
+    eeglabpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\eeglab';
+    sptpath = 'E:\OneDrive - CCLAB\Scripting\iEEG study\spt_est';
+    refpath = 'E:\CCLAB\BrainWorks - Ref utilities';
 else
     eeglabpath = '/media/shu/hdd/toolbox/eeglab14_1_2b';
     sptpath = '/media/shu/hdd/toolbox/sptkit';
