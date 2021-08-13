@@ -9,7 +9,7 @@ function eeglabstart(varargin)
 
 if ispc
     eeglabpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\eeglab';
-    sptpath = 'E:\OneDrive - CCLAB\Scripting\iEEG study\spt_est';
+    sptpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\sptkit';
     refpath = 'E:\CCLAB\BrainWorks - Ref utilities';
 else
     eeglabpath = '/media/shu/hdd/toolbox/eeglab14_1_2b';
