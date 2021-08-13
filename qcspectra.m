@@ -20,6 +20,7 @@ function [pro, rkr, f]= qcspectra(EEG,nw,fs,varargin)
 
 fmax = varargin{1};   % filtering
 fmin = varargin{2};   % filtering
+[svfd,nm]=fileparts(varargin{4});
 [S, f, nss] = xspt(EEG,nw,fs,fmax,fmin);
 fbd = [fmin fmax];
 
@@ -69,7 +70,7 @@ if nargin==7
     subplot(236),
     topoplot(real(Q(:,1)),varargin{3},'style','map'); title('CPC1: map');
     fg=gcf; fg.Position = [24 317 1105 585];
-    saveas(gcf,[varargin{4},'_par'],'svg');
+    saveas(gcf,fullfile(svfd,['Par_',nm]),'svg');
 
     figure,
     for i=1:8
@@ -77,7 +78,7 @@ if nargin==7
     topoplot(real(Q(:,i)),varargin{3},'style','map'); title(['CPC:',num2str(i)]);
     end
     fg=gcf; fg.Position = [1135 206 380 771];
-    saveas(gcf,[varargin{4},'_map'],'svg');
+    saveas(gcf,fullfile(svfd,['Map_',nm]),'svg');
 end
 close all;
 
