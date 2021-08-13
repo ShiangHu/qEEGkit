@@ -2,10 +2,12 @@ function qeegstart
 % initialize the environment and add a few toolbox for qeeg study
 
 if ispc
-rdplgpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\read PLG';
-qeegpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\qeeg (andy version)\qeegp';
-refpath = 'E:\CCLAB\BrainWorks - Ref utilities';
-sphlfpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\sph lead field calculation';
+rdplgpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\qEEG misc\read PLG';
+qeegpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\qEEG misc\qeeg (andy version)\qeegp';
+refpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\RESTref\rREST\unipolar_ref';
+sphlfpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\RESTref\sph lead field calculation';
+eeglabstart('no gui');
+clc;clear;close all;
 else
 rdplgpath = '/home/shu/ExpanDrive/OneDrive Business/Scripting/Toolbox/read PLG';    
 qeegpath = '/home/shu/ExpanDrive/OneDrive Business/Scripting/Toolbox/qeeg (andy version)/qeegp';
