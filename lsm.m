@@ -22,4 +22,5 @@ for i=4:numel(subDirs)       % ingnore .git
     end
 end
 
+display(parDir);
 end
