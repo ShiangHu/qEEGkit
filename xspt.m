@@ -1,4 +1,4 @@
-function [Pxy, f, nss] = xspt(data,nw,fs,vargin)
+function [Pxy, f, nss] = xspt(data,nw,fs,varargin)
 % xspt calculates the cross spectral matrix of multivariate time
 % series with Thomson multitaper method.
 % Usage: [Pxy, f] = crossspectrum(data,nw,nfft,fs,fmax)
@@ -18,16 +18,16 @@ function [Pxy, f, nss] = xspt(data,nw,fs,vargin)
 
 [nc, nt, ns] = size(data);
 nfft = 2.56*fs;
-if ns == 1
-%     warning('only 1 segment?')
+if ns == 1  %     warning('only 1 segment?')
     ns = floor(nt/nfft);
     data = reshape(data(:,1:ns*nfft),[nc nfft ns]);
 end
 
-f = fs/nfft*(0:nfft/2);
-if ~isempty(vargin)
-    fmax = vargin;
-    f = f(f>0&f<=fmax);
+f = fs/nfft*(1:nfft);
+if ~isempty(varargin)
+    fmax = varargin{1}; fmin = varargin{2};
+    fftidx = (f>=fmin&f<=fmax);
+    f = f(fftidx);
 end
 nf = length(f);
 
@@ -41,6 +41,8 @@ for i = 1:ns
     dati = data(:,:,i);
     dati = repmat(dati,[1,1,size(E,3)]).*E;
     fc_i = fft(dati,[],2);
+    fc_i = fc_i(:,fftidx,:);
+    
     Pxy_i = zeros(nc,nc,nf);
     for j = 1:nf
         Pxy_i(:,:,j) = cov(squeeze(fc_i(:,j,:)).',1); % note the non-conjucate transpose
