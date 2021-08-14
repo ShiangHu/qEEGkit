@@ -18,6 +18,12 @@ function [pro, rkr, f]= qcspectra(EEG,nw,fs,varargin)
 
 % Shiang Hu, Jan. 9, 2020
 
+% only one channel
+if size(EEG,1)==1
+    pro=0; 
+    return;     % skip single channel data
+end
+
 fmax = varargin{1};   % filtering
 fmin = varargin{2};   % filtering
 [svfd,nm]=fileparts(varargin{4});
@@ -25,9 +31,9 @@ fmin = varargin{2};   % filtering
 fbd = [fmin fmax];
 
 % idxing and referencing
-[nc,~,nf] = size(S);
+nf = size(S,3);
 n = nss*ones(1,nf);
-pmax = 10; 
+pmax = 10;
 lmax = 50;
 
 % CPC
@@ -42,24 +48,24 @@ ssd = sum(psd(:));          % sum of powers (explained variance)
 profd = lmd(:,1)/ssd;               % frequency dependent palosi of 1st cp
 procd = sum(lmd)/ssd;               % component dependent palosi
 % proch = Q./repmat(sum(Q.^2),[nc,1]);% channal weights in the CPC
-pro = sum(profd);                   % total palosi 
+pro = sum(profd);                   % total palosi
 
 % check if plot results
 if nargin==7
     figure
     % eigenvalues
-    subplot(231), semilogy(real(lmd)), 
+    subplot(231), semilogy(real(lmd)),
     xlim(fbd); xlabel('Freq'); title('Log engergy');
-
-    subplot(234), plot(real(lmd)), 
+    
+    subplot(234), plot(real(lmd)),
     xlim(fbd); xlabel('Freq'); title('Natural engergy');
     
     % proportion of components
-    subplot(232), pareto(procd); 
+    subplot(232), pareto(procd);
     title('Proportion of cumulated > 95% variance');
-
+    
     subplot(235),
-    plot(1:pmax,cumsum(procd),'.',1:pmax,procd,'^'); 
+    plot(1:pmax,cumsum(procd),'.',1:pmax,procd,'^');
     legend({'CumPro','VarPro'}); xlim([1 pmax]); xlabel('Ordered CPC');
     title('Proportion of each CPC');
     
@@ -71,11 +77,11 @@ if nargin==7
     topoplot(real(Q(:,1)),varargin{3},'style','map'); title('CPC1: map');
     fg=gcf; fg.Position = [24 317 1105 585];
     saveas(gcf,fullfile(svfd,['Par_',nm]),'svg');
-
+    
     figure,
     for i=1:8
-    subplot(4,2,i)
-    topoplot(real(Q(:,i)),varargin{3},'style','map'); title(['CPC:',num2str(i)]);
+        subplot(4,2,i)
+        topoplot(real(Q(:,i)),varargin{3},'style','map'); title(['CPC:',num2str(i)]);
     end
     fg=gcf; fg.Position = [1135 206 380 771];
     saveas(gcf,fullfile(svfd,['Map_',nm]),'svg');
