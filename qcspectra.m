@@ -18,10 +18,10 @@ function [pro, rkr, f]= qcspectra(EEG,nw,fs,varargin)
 
 % Shiang Hu, Jan. 9, 2020
 
-% only one channel
-if size(EEG,1)==1
+% check if cross spectra failes 
+if size(EEG,1)<2
     pro=0; 
-    return;     % skip single channel data
+    return; 
 end
 
 fmax = varargin{1};   % filtering
