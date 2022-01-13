@@ -6,7 +6,7 @@ if isunix
     bstpath = '/media/shu/hdd/toolbox/brainstorm3';
     onPath = any(strcmp(bstpath, pathCell));
 elseif ispc
-    bstpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\brainstorm\brainstorm3';
+    bstpath = 'D:\OneDrive - CCLAB\Scripting\Toolbox\brainstorm\brainstorm3';
     onPath = any(strcmpi(bstpath, pathCell));
 end
 

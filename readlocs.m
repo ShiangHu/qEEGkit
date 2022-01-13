@@ -365,7 +365,7 @@ if ischar(filename)
         case 'mat', g.filetype = 'mat';
         otherwise, g.filetype =  ''; 
        end
-       fprintf('readlocs(): ''%s'' format assumed from file extension\n', g.filetype); 
+%        fprintf('readlocs(): ''%s'' format assumed from file extension\n', g.filetype); % cmt by Andy Hu Nov8, 2021
    else 
        if strcmpi(g.filetype, 'locs'),  g.filetype = 'loc'; end
        if strcmpi(g.filetype, 'eloc'),  g.filetype = 'loc'; end

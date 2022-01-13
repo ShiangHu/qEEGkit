@@ -24,6 +24,9 @@ if ns == 1  %     warning('only 1 segment?')
 end
 
 f = fs/nfft*(1:nfft);
+
+fftidx = 1:nfft;
+
 if ~isempty(varargin)
     fmax = varargin{1}; fmin = varargin{2};
     fftidx = (f>=fmin&f<=fmax);

@@ -2,7 +2,7 @@ function BSTstart(varargin)
 % add brainstorm toolbox
 
 if ispc
-    addpath('E:\OneDrive - CCLAB\Scripting\Toolbox\brainstorm\brainstorm3');
+    addpath('D:\OneDrive - CCLAB\Scripting\Toolbox\brainstorm\brainstorm3');
 else
     addpath('/media/shu/hdd/toolbox/brainstorm3');
 end

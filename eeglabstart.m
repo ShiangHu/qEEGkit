@@ -7,8 +7,11 @@ function eeglabstart(varargin)
 
 % Shiang Hu, Oct. 7, 2019
 
-eeglabpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\eeglab';
-sptpath = 'E:\OneDrive - CCLAB\Scripting\Toolbox\sptkit';
+% st = dbstack;
+% tool_dir = fileparts(which(st.file));
+tool_dir = 'D:\OneDrive - CCLAB\Scripting\Toolbox';
+eeglabpath = fullfile(tool_dir,'eeglab');
+sptpath = fullfile(tool_dir,'sptkit');
 
 elocpath = [eeglabpath,filesep,'sample_locs'];
 addpath(eeglabpath,elocpath,sptpath);
@@ -17,7 +20,8 @@ addpath(eeglabpath,elocpath,sptpath);
 if nargin == 0
     eeglab;
 else % no gui pops up
-    addpath(genpath(eeglabpath));
+    %     addpath(genpath(eeglabpath));
+    eeglab nogui;
 end
 clc;
 end
