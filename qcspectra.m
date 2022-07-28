@@ -1,4 +1,4 @@
-function [pro, rkr, f]= qcspectra(EEG,nw,fs,varargin)
+function [pro, rkr, f, ssd]= qcspectra(EEG,nw,fs,varargin)
 % Quality check of cross spectra
 % Input
 %       EEG: data (nc-nt-ns / nc-nt)

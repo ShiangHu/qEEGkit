@@ -9,25 +9,21 @@ function eeglabstart(varargin)
 
 % st = dbstack;
 % tool_dir = fileparts(which(st.file));
+
 tool_dir = 'D:\OneDrive - CCLAB\Scripting\Toolbox';
+
 eeglabpath = fullfile(tool_dir,'eeglab');
+elocpath = [eeglabpath,filesep,'sample_locs'];
 sptpath = fullfile(tool_dir,'sptkit');
 
-elocpath = [eeglabpath,filesep,'sample_locs'];
 addpath(eeglabpath,elocpath,sptpath);
 
 % add the starting path of eeglab
 if nargin == 0
     eeglab;
 else % no gui pops up
-    %     addpath(genpath(eeglabpath));
     eeglab nogui;
 end
-clc;
+% clc;
 end
 
-%     addpath(genpath(fullfile(eeglabpath,filesep,'functions')));
-%     addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','doc'));
-%     addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','t200_FileAccess'));
-%     addpath(fullfile(eeglabpath,filesep,'plugins',filesep,'Biosig3.3.0',filesep,'biosig','t250_ArtifactPreProcessingQualityControl'));
-%     rmpath (genpath(fullfile(eeglabpath,filesep,'functions','octavefunc')));
